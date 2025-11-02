@@ -5,8 +5,17 @@ export const BrightnessSliderComponent = () => {
   const segments = 5
   const [level, setLevel] = useState(2)
 
-  const handleClick = (index: any) => {
-    setLevel(index + 1)
+  const handleClick = (index: number) => {
+    const newLevel = index + 1
+    setLevel(newLevel)
+
+    const brightnessValue = Math.round((newLevel / segments) * 255)
+
+    fetch(`/api/brightness?value=${brightnessValue}`)
+      .then(res => {
+        if (!res.ok) console.error('Failed to set brightness')
+      })
+      .catch(console.error)
   }
 
   return (

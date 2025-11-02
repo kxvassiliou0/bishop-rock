@@ -1,9 +1,19 @@
 import { useState } from 'react'
-import './vertical-toggle-component.styles.css'
+import './on-off-toggle-component.styles.css'
 
-export const VerticalToggleComponent = () => {
+export const OnOffToggleComponent = () => {
   const options = ['Off', 'On']
   const [selected, setSelected] = useState(options[0])
+
+  const handleClick = (option: string) => {
+    setSelected(option)
+    const value = option === 'On' ? 1 : 0
+    fetch(`/api/onoff?value=${value}`)
+      .then(res => {
+        if (!res.ok) console.error('Failed to set on/off state')
+      })
+      .catch(console.error)
+  }
 
   return (
     <div className="segment-toggle vertical">
@@ -11,7 +21,7 @@ export const VerticalToggleComponent = () => {
         <button
           key={option}
           className={`segment-option ${selected === option ? 'active' : ''}`}
-          onClick={() => setSelected(option)}
+          onClick={() => handleClick(option)}
         >
           {option}
         </button>

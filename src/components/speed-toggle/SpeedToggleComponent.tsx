@@ -6,6 +6,20 @@ export const SpeedToggleComponent = () => {
   const [selected, setSelected] = useState(options[0])
   const selectedIndex = options.indexOf(selected)
 
+  // Convert option string to number
+  const optionToNumber = (option: string) => parseFloat(option)
+
+  const handleClick = (option: string) => {
+    setSelected(option)
+    const value = optionToNumber(option)
+    // Send value to ESP8266
+    fetch(`/api/speed?value=${value}`)
+      .then(res => {
+        if (!res.ok) console.error('Failed to set speed')
+      })
+      .catch(console.error)
+  }
+
   return (
     <div className="container">
       <label className="speed-label">Speed</label>
@@ -14,7 +28,7 @@ export const SpeedToggleComponent = () => {
           <button
             key={option}
             className={`segment-option ${selected === option ? 'active' : ''}`}
-            onClick={() => setSelected(option)}
+            onClick={() => handleClick(option)}
           >
             {option}
           </button>

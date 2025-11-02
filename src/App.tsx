@@ -1,8 +1,8 @@
 import './App.css'
 import {
   BrightnessSliderComponent,
+  OnOffToggleComponent,
   SpeedToggleComponent,
-  VerticalToggleComponent,
 } from './components'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <div className="title">
           <h1>Bishop Rock Lighthouse</h1>
         </div>
-        <VerticalToggleComponent />
+        <OnOffToggleComponent />
       </div>
       <hr />
       <BrightnessSliderComponent />
