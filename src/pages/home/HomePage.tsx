@@ -1,4 +1,5 @@
 import SettingsIcon from '../../assets/SettingsIcon.svg'
+import BishopRockImg from '../../assets/bishop-rock-image.jpg'
 import './home-page.styles.css'
 
 interface HomePageProps {
@@ -18,7 +19,7 @@ export default function HomePage({ onSettingsClick }: HomePageProps) {
           />
         </button>
       </div>
-      <hr className="homepage-divider" />
+      <hr />
 
       <section className="homepage-section">
         <p>
@@ -30,6 +31,14 @@ export default function HomePage({ onSettingsClick }: HomePageProps) {
           against the full force of the Atlantic for over 160 years.
         </p>
       </section>
+
+      <img
+        src={BishopRockImg}
+        alt="Bishop Rock Lighthouse"
+        className="homepage-main-image"
+      />
+
+      <hr />
 
       <section className="homepage-section">
         <h3 className="homepage-subtitle">A Tower Born from Storms</h3>

@@ -16,7 +16,7 @@ export const OnOffToggleComponent = () => {
   }
 
   return (
-    <div className="onoff-toggle vertical">
+    <div className="onoff-toggle">
       {options.map((option, index) => (
         <button
           key={option}
@@ -31,7 +31,8 @@ export const OnOffToggleComponent = () => {
       <div
         className="onoff-toggle-highlight"
         style={{
-          transform: `translateY(${selectedIndex * 100}%)`,
+          width: `${100 / options.length}%`,
+          transform: `translateX(${selectedIndex * 100}%)`,
         }}
       />
     </div>

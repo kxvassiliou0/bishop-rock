@@ -38,7 +38,7 @@
 
 .brightness-segment {
   flex: 1;
-  height: 18px;
+  height: 28px;
   border-radius: 6px;
   background-color: #e5e5ea;
   transition: background-color 0.25s ease, transform 0.15s ease;
