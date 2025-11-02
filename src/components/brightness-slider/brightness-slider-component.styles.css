@@ -1,0 +1,59 @@
+.brightness-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  color: #1c1c1e;
+  user-select: none;
+  padding: 16px 0;
+}
+
+.labels {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.brightness-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #6e6e73;
+}
+
+.brightness-track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  background-color: #f2f2f7;
+  padding: 6px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.brightness-segment {
+  flex: 1;
+  height: 18px;
+  border-radius: 6px;
+  background-color: #e5e5ea;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+.brightness-segment.active {
+  background-color: #ffcc00; /* Apple Home yellow glow */
+}
+
+.brightness-segment:hover {
+  transform: scale(1.05);
+}
+
+.brightness-value {
+  font-size: 14px;
+  color: #8e8e93;
+}

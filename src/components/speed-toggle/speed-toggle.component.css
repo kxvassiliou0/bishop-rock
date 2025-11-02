@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.segment-toggle {
+  position: relative;
+  display: flex;
+  background-color: #f2f2f2;
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+  user-select: none;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.segment-toggle.horizontal {
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+}
+
+.segment-option {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8e8e93;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.25s ease;
+}
+
+.segment-option.active {
+  color: #000;
+}
+
+.segment-option:focus {
+  outline: none;
+}
+
+/* Horizontal highlight */
+.segment-highlight {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: transform 0.25s ease; /* <- smooth hardware-accelerated sliding */
+}
+
+.speed-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #6e6e73;
+}
