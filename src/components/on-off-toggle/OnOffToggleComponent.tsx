@@ -1,29 +1,20 @@
-import { useState } from 'react'
 import './on-off-toggle-component.styles.css'
 
-export const OnOffToggleComponent = () => {
-  const options = ['Off', 'On']
-  const [selectedIndex, setSelectedIndex] = useState(0)
+interface OnOffToggleProps {
+  value: number
+  onChange: (value: number) => void
+}
 
-  const handleClick = (index: number) => {
-    setSelectedIndex(index)
-    const value = index === 1 ? 1 : 0
-    fetch(`/api/onoff?value=${value}`)
-      .then(res => {
-        if (!res.ok) console.error('Failed to set on/off state')
-      })
-      .catch(console.error)
-  }
+export const OnOffToggleComponent = ({ value, onChange }: OnOffToggleProps) => {
+  const options = ['Off', 'On']
 
   return (
     <div className="onoff-toggle">
       {options.map((option, index) => (
         <button
           key={option}
-          className={`onoff-toggle-option ${
-            selectedIndex === index ? 'active' : ''
-          }`}
-          onClick={() => handleClick(index)}
+          className={`onoff-toggle-option ${value === index ? 'active' : ''}`}
+          onClick={() => onChange(index)}
         >
           {option}
         </button>
@@ -32,7 +23,7 @@ export const OnOffToggleComponent = () => {
         className="onoff-toggle-highlight"
         style={{
           width: `${100 / options.length}%`,
-          transform: `translateX(${selectedIndex * 100}%)`,
+          transform: `translateX(${value * 100}%)`,
         }}
       />
     </div>

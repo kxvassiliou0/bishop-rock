@@ -4,13 +4,23 @@ import {
   OnOffToggleComponent,
   SpeedToggleComponent,
 } from '../../components'
+import { useConfig } from '../../hooks/useConfig'
 import './config-page.styles.css'
 
-interface ConfigPageProps {
+export default function ConfigPage({
+  onBackClick,
+}: {
   onBackClick: () => void
-}
+}) {
+  const {
+    onOff,
+    speed,
+    brightness,
+    updateOnOff,
+    updateSpeed,
+    updateBrightness,
+  } = useConfig()
 
-export default function ConfigPage({ onBackClick }: ConfigPageProps) {
   return (
     <div className="config-container">
       <div className="config-header">
@@ -20,11 +30,14 @@ export default function ConfigPage({ onBackClick }: ConfigPageProps) {
           </button>
           <h1>Config</h1>
         </div>
-        <OnOffToggleComponent />
+        <OnOffToggleComponent value={onOff} onChange={updateOnOff} />
       </div>
-      <hr />
-      <BrightnessSliderComponent />
-      <SpeedToggleComponent />
+
+      <BrightnessSliderComponent
+        value={brightness}
+        onChange={updateBrightness}
+      />
+      <SpeedToggleComponent value={speed} onChange={updateSpeed} />
     </div>
   )
 }

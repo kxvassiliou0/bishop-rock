@@ -1,38 +1,27 @@
-import { useState } from 'react'
 import './speed-toggle.component.css'
 
-export const SpeedToggleComponent = () => {
-  const options = ['0.5x', '1x', '1.5x']
-  const [selected, setSelected] = useState(options[0])
-  const selectedIndex = options.indexOf(selected)
+interface SpeedToggleProps {
+  value: number
+  onChange: (value: number) => void
+}
 
-  // Convert option string to number
-  const optionToNumber = (option: string) => parseFloat(option)
-
-  const handleClick = (option: string) => {
-    setSelected(option)
-    const value = optionToNumber(option)
-    // Send value to ESP8266
-    fetch(`/api/speed?value=${value}`)
-      .then(res => {
-        if (!res.ok) console.error('Failed to set speed')
-      })
-      .catch(console.error)
-  }
+export const SpeedToggleComponent = ({ value, onChange }: SpeedToggleProps) => {
+  const options = [0.5, 1, 1.5]
+  const selectedIndex = options.indexOf(value)
 
   return (
     <div className="speed-toggle-container">
       <label className="speed-toggle-label">Speed</label>
       <div className="speed-toggle horizontal">
-        {options.map(option => (
+        {options.map((option, index) => (
           <button
             key={option}
             className={`speed-toggle-option ${
-              selected === option ? 'active' : ''
+              selectedIndex === index ? 'active' : ''
             }`}
-            onClick={() => handleClick(option)}
+            onClick={() => onChange(option)}
           >
-            {option}
+            {option}x
           </button>
         ))}
         <div
