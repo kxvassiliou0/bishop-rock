@@ -21,20 +21,22 @@ export const SpeedToggleComponent = () => {
   }
 
   return (
-    <div className="container">
-      <label className="speed-label">Speed</label>
-      <div className="segment-toggle horizontal">
+    <div className="speed-toggle-container">
+      <label className="speed-toggle-label">Speed</label>
+      <div className="speed-toggle horizontal">
         {options.map(option => (
           <button
             key={option}
-            className={`segment-option ${selected === option ? 'active' : ''}`}
+            className={`speed-toggle-option ${
+              selected === option ? 'active' : ''
+            }`}
             onClick={() => handleClick(option)}
           >
             {option}
           </button>
         ))}
         <div
-          className="segment-highlight"
+          className="speed-toggle-highlight"
           style={{
             width: `${100 / options.length}%`,
             transform: `translateX(${selectedIndex * 100}%)`,

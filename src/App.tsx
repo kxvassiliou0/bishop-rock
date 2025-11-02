@@ -1,24 +1,21 @@
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
-import {
-  BrightnessSliderComponent,
-  OnOffToggleComponent,
-  SpeedToggleComponent,
-} from './components'
+import ConfigPage from './pages/config/ConfigPage'
+import HomePage from './pages/home/HomePage'
 
-function App() {
+export default function App() {
+  const navigate = useNavigate()
+
   return (
-    <div className="container">
-      <div className="header">
-        <div className="title">
-          <h1>Bishop Rock Lighthouse</h1>
-        </div>
-        <OnOffToggleComponent />
-      </div>
-      <hr />
-      <BrightnessSliderComponent />
-      <SpeedToggleComponent />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={<HomePage onSettingsClick={() => navigate('/config')} />}
+      />
+      <Route
+        path="/config"
+        element={<ConfigPage onBackClick={() => navigate('/')} />}
+      />
+    </Routes>
   )
 }
-
-export default App

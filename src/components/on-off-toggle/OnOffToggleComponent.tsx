@@ -3,11 +3,11 @@ import './on-off-toggle-component.styles.css'
 
 export const OnOffToggleComponent = () => {
   const options = ['Off', 'On']
-  const [selected, setSelected] = useState(options[0])
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const handleClick = (option: string) => {
-    setSelected(option)
-    const value = option === 'On' ? 1 : 0
+  const handleClick = (index: number) => {
+    setSelectedIndex(index)
+    const value = index === 1 ? 1 : 0
     fetch(`/api/onoff?value=${value}`)
       .then(res => {
         if (!res.ok) console.error('Failed to set on/off state')
@@ -16,21 +16,22 @@ export const OnOffToggleComponent = () => {
   }
 
   return (
-    <div className="segment-toggle vertical">
-      {options.map(option => (
+    <div className="onoff-toggle vertical">
+      {options.map((option, index) => (
         <button
           key={option}
-          className={`segment-option ${selected === option ? 'active' : ''}`}
-          onClick={() => handleClick(option)}
+          className={`onoff-toggle-option ${
+            selectedIndex === index ? 'active' : ''
+          }`}
+          onClick={() => handleClick(index)}
         >
           {option}
         </button>
       ))}
       <div
-        className="segment-highlight"
+        className="onoff-toggle-highlight"
         style={{
-          height: `${100 / options.length}%`,
-          top: `${(options.indexOf(selected) * 100) / options.length}%`,
+          transform: `translateY(${selectedIndex * 100}%)`,
         }}
       />
     </div>
