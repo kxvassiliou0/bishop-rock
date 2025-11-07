@@ -1,73 +1,46 @@
-# React + TypeScript + Vite
+# Bishop Rock Lighthouse Interactive Signal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Reimagining a lighthouse signal as an interactive experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## React Compiler
+This project transforms the iconic **Fl(2) W 15s** signal of **Bishop Rock Lighthouse** into a digital-physical, interactive experience. Instead of simply replicating the lighthouse’s physical model, it translates the signature rhythm into a system that users can explore in real time.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Users can adjust brightness, sequence speed, and animation effects instantly, creating a dynamic and tactile experience. No Wi-Fi setup or technical knowledge is required. This project bridges maritime heritage with contemporary interaction, making the lighthouse’s legacy tangible in a playful, modern way.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Interactive Lighthouse Signal**: Adjust LED brightness, speed, and visual effects like sweep and pulse.
+- **Instant Feedback**: Changes are reflected immediately through the microcontroller.
+- **Accessible Interface**: Simple, intuitive controls designed for anyone to explore.
+- **Sustainable Design**: Efficient firmware and eco-conscious hardware choices extend longevity and reduce power consumption.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Technical Details
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Firmware
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Developed on **Arduino/ESP8266**
+- Uses **FastLED** to create precise LED sequences
+- Implements a **custom state machine** to faithfully recreate the double-flash pattern
+- Supports multiple user-controlled modes for dynamic interaction
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Software
+
+- **React-based captive portal** for real-time control
+- Communicates directly with the microcontroller via HTTP/WebSocket
+- Allows instant adjustments to intensity, speed, and animation effects
+- Seamlessly integrates digital input with physical output for responsive interaction
+
+---
+
+## Design Goals
+
+1. **Clarity and Usability**: Intuitive layouts and immediate feedback.
+2. **Heritage Meets Playfulness**: Preserves the lighthouse’s signature rhythm in a modern, engaging way.
+3. **Sustainability**: Efficient firmware design to reduce electronic waste and maximise hardware lifespan.
